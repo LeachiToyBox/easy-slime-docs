@@ -69,6 +69,7 @@ code { font-family: var(--f-mono); font-size: .86em; background: var(--slime-sof
 figure { margin: 0; display: grid; gap: 6px; }
 figure img { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: 8px; }
 figcaption { font-size: 13px; color: var(--muted); }
+figure.narrow { max-width: 560px; }
 .pair { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; align-items: start; }
 @media (max-width: 760px) { .pair { grid-template-columns: minmax(0, 1fr); } }
 .pair > * { min-width: 0; }
@@ -285,6 +286,7 @@ a { color: var(--slime-deep); }
       </tbody>
     </table></div>
     <figure class="wide"><img src="shots/b4_gimmick.png" alt="衣装ごとの畳みと、ギミック (服ではない) の畳み。衣装の見出しにはメニューの名前が付いている" loading="lazy"><figcaption>衣装ごとの畳み ([メニュー: …] 付き) と、ギミックの畳み (スマホ・ポーズのギミックなど)</figcaption></figure>
+    <figure class="narrow"><img src="shots/b4_set_parts.jpg" alt="ゆめかの見本 2 枚。左は耳・しっぽ・角・翼をスライムにした物で翼もしっぽも青いスライム、右はしない物で翼としっぽが元の黒いまま" loading="lazy"><figcaption>耳・しっぽ・角・翼の見本 (ゆめか)。左から スライムにする / しない (そのまま)。「しない」だと翼・しっぽが元の黒い見た目で残ります。上は全身、下は斜め後ろ。スライムにしてから 10 秒目 (スライムになりきった状態) の絵です</figcaption></figure>
 
     <h4>手や足が別メッシュのアバター</h4>
     <p>手・足・肉球などが体と別のメッシュになっているアバター (おまねこなど) は、そのメッシュが最初は「服」の畳みに「そのまま (服)」で並びます。<b>扱いを「スライムにする」にしてください。</b>体の骨に乗っている肌なので、アップロードの時に自動で体と同じ崩れ方になり、指の形が残って体との継ぎ目がそろいます。</p>
@@ -364,6 +366,10 @@ a { color: var(--slime-deep); }
         <tr><td>メニューの色の初期値</td><td class="v">0</td><td>ゲーム内メニューの「色」の最初の位置。0 = 上のスライムの色のまま。帯の色がその位置で着た時の色、右の四角が今の値の色です</td></tr>
       </tbody>
     </table></div>
+    <p>次の見本は、ゆめかでその項目だけを変えて焼いた物です (ほかは既定のまま)。どれもスライムにしてから 10 秒目 (スライムになりきった状態) の絵で、上は全身、下は上半身です。</p>
+    <figure class="wide"><img src="shots/b4_set_clarity.jpg" alt="ゆめかの透明度の見本 5 枚。0.2 から 1.8 へ進むほど体・垂れ・水たまりの色が淡くなり、奥の床の市松模様が透けて見える" loading="lazy"><figcaption>透明度。左から 0.2 / 0.6 / 1.0 (既定) / 1.4 / 1.8。三角形の数はどれも同じです</figcaption></figure>
+    <figure class="wide"><img src="shots/b4_set_look.jpg" alt="ゆめかの雰囲気の見本 3 枚。控えめは形が保たれ垂れが少なく、ドロドロは腕から長い垂れが落ち表面の崩れが大きい" loading="lazy"><figcaption>雰囲気。左から おすすめ / 控えめ / ドロドロ (「手動」は値の組みではないので載せていません)。画像の上の数字は焼いた後の全メッシュの三角形の数: 207,200 / 174,770 / 239,078</figcaption></figure>
+    <figure class="wide"><img src="shots/b4_set_weight.jpg" alt="ゆめかの重さの見本 4 枚。軽いから豪華へ進むほど垂れの本数が増え、豪華では腕から床まで届く長い垂れが出る" loading="lazy"><figcaption>重さ。左から 軽い / 標準 / 豪華・軽量版 / 豪華。画像の上の数字は焼いた後の全メッシュの三角形の数 (アバター本体込み) で、171,458 / 207,200 / 297,996 / 505,298。上の表の目安は「増えるポリゴン」なので数字が違います</figcaption></figure>
   </section>
 
   <section id="ja-detail">
@@ -463,6 +469,7 @@ a { color: var(--slime-deep); }
       <li><b>体の部位ごと</b>: 手・腕・胴・胸・脚・足ごとに、溶け (溶ける強さ)・上限 (元の形からどこまで膨らむか cm)・垂れ (落ちる垂れの量)</li>
       <li><b>その他</b>: ポリゴン量を「重さ」より細かく選ぶ、糸 (腕と胴など近い所どうしを液の糸で結ぶ)</li>
     </ul>
+    <figure class="wide"><img src="shots/b4_set_handcap.jpg" alt="ゆめかの手の崩れの上限の見本 3 枚。下の段は左手の拡大で、0.1cm は指の形がはっきり残り、1.0cm は指が膨らんで丸く崩れる" loading="lazy"><figcaption>体の部位ごとの「上限」の見本 (ゆめかの手)。左から 0.1cm / 0.3cm (既定) / 1.0cm。上は全身、下は左手。大きくするほど指が膨らんで形が崩れます。② の体の行の「崩れ (cm まで)」も同じ値です。スライムにしてから 10 秒目 (スライムになりきった状態) の絵です</figcaption></figure>
   </section>
 
   <section id="ja-tune">
