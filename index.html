@@ -104,6 +104,7 @@ a { color: var(--slime-deep); }
 .latest .t { grid-column: 1 / -1; font-family: var(--f-display); font-weight: 700; color: var(--slime-deep); }
 .latest dt { color: var(--muted); font-size: 13px; }
 .latest dd { margin: 0; min-width: 0; overflow-wrap: anywhere; font-family: var(--f-mono); font-size: 14px; }
+details > summary { cursor: pointer; font-weight: 700; padding: 12px 0; }
 </style>
 </head>
 <body>
@@ -113,7 +114,7 @@ a { color: var(--slime-deep); }
 <main id="ja" lang="ja">
   <dl class="latest" aria-label="最新版">
     <span class="t">最新版</span>
-    <dt>バージョン</dt><dd id="ver-ja">0.9.0-beta.5 (2026-10-24)</dd>
+    <dt>バージョン</dt><dd id="ver-ja">0.9.0-beta.6 (2026-11-25)</dd>
     <dt>ダウンロード</dt><dd id="url-ja" style="font-family:var(--f-body)">Discord サーバーでお知らせします</dd>
   </dl>
   <header>
@@ -163,7 +164,7 @@ a { color: var(--slime-deep); }
   </div>
 
   <nav class="toc" aria-label="目次">
-    <a href="#ja-changes"><span class="n">新</span>β5 で変わったこと</a>
+    <a href="#ja-changes"><span class="n">新</span>β6 で変わったこと</a>
     <a href="#ja-install"><span class="n">1</span>導入の手順</a>
     <a href="#ja-screen"><span class="n">2</span>設定画面の全体</a>
     <a href="#ja-prep"><span class="n">3</span>準備 ①〜⑤</a>
@@ -179,16 +180,40 @@ a { color: var(--slime-deep); }
   </nav>
 
   <section id="ja-changes">
-    <div class="chap"><span class="n">新</span><h2>β5 で変わったこと</h2></div>
+    <div class="chap"><span class="n">新</span><h2>β6 で変わったこと</h2></div>
     <div class="caution">
-      <span class="h">β5 は入れ直しです</span>
-      <p>設定画面と、保存する設定の形を作り直しました。<b>前の版の設定は引き継げません。</b>次の順で入れ直してください。</p>
+      <span class="h">β5 からは上書きで大丈夫です</span>
+      <p>β6 の unitypackage をそのままインポートしてください。フォルダを消す必要はなく、<b>設定も顔マスクも引き継ぎます。</b>アバターをアップロードし直すと、軽くなった描き方が反映されます。</p>
+      <p>β4 以前からの方は、下の「β5 で変わったこと」の入れ直しの手順で、β6 の unitypackage を入れてください。</p>
+    </div>
+    <div class="tablebox"><table>
+      <thead><tr><th>変わったこと</th><th>内容</th></tr></thead>
+      <tbody>
+        <tr><th colspan="2">重さ</th></tr>
+        <tr><td>近く・鏡の重さ</td><td>近くで見た時と鏡で見た時に、スライムで増える重さが、β5 のおよそ 3 分の 1 になりました (エディタで VR 相当の条件で測った値。VRChat の中ではまだ測っていません)。体や顔の元のマテリアルがカットアウトのアバターで特に効きます (#11)</td></tr>
+        <tr><td>軽い描き方が既定に</td><td>髪・垂れ・水たまりの透け方と、服の上の垂れ・小物の描き方を、軽い方に変えました。見た目はわずかに変わります。前の見た目に戻したい時は、<a href="#ja-detail">細かく調整 › 重さと見た目</a>の上の 2 つをオンにします (重くなります)</td></tr>
+        <tr><th colspan="2">見た目</th></tr>
+        <tr><td>下を向いた時の垂れ</td><td>下を向いた時に、垂れが顔を突き抜けないようにしました (#82)</td></tr>
+        <tr><td>砂のような点</td><td>体に沿って流れる筋の継ぎ目に出ていた、砂のような点を直しました (#34)</td></tr>
+        <tr><td>指・耳・しっぽの先の垂れ</td><td>細い部品の垂れが太すぎて、角ばって浮いて見えていたのを直しました (#65)</td></tr>
+        <tr><td>袖だけ溶かした時</td><td>袖・手袋だけを溶かした時に、ほかの服 (パンツなど) が縮めていた腰・脚まで戻らないようにしました。ドレスだけ溶かしてパンツが残る時も、パンツの下は縮んだままです (#8)</td></tr>
+        <tr><th colspan="2">設定画面</th></tr>
+        <tr><td>狭い幅</td><td>インスペクターが狭い時は、準備の行を 2 段にして、右のボタンが切れないようにしました。収まらない名前は真ん中を「…」で切ります (#21)</td></tr>
+        <tr><td>重さと見た目</td><td>細かく調整の「軽くする」を「重さと見た目」に改めました</td></tr>
+        <tr><td>プレビュー・注意</td><td>同じ名前のメッシュがあるアバターのプレビューを直し、同じ親に同じ名前のメッシュがある時は注意を出すようにしました (#29)。骨の重みが無いメッシュをスライムにした時、プレビューに出なかったのも直しました (#30)</td></tr>
+      </tbody>
+    </table></div>
+    <details>
+      <summary>β5 で変わったこと</summary>
+    <div class="caution">
+      <span class="h">β4 以前からは入れ直しです</span>
+      <p>β5 で、設定画面と保存する設定の形を作り直しました。<b>前の版の設定は引き継げません。</b>次の順で入れ直してください。</p>
       <ol>
         <li>アバターに置いてある <code>EasySlime.prefab</code> を消す</li>
         <li>プロジェクトの <code>Assets/LeachiToyBox/EasySlime</code> フォルダを消す (顔マスクは <code>EasySlimeData</code> に残っています。消さないでください。prefab を置き直すと、前に選んだ顔マスクが自動でつながります)</li>
-        <li>β5 の unitypackage をインポートし、<a href="#ja-install">1 章</a>の手順で prefab を置き直す</li>
+        <li>最新の unitypackage をインポートし、<a href="#ja-install">1 章</a>の手順で prefab を置き直す</li>
       </ol>
-      <p>β5-pre を入れた方は、β5 の unitypackage をそのままインポートすれば大丈夫です (設定も引き継げます)。</p>
+      <p>β5-pre・β5 を入れた方は、最新の unitypackage をそのままインポートすれば大丈夫です (設定も引き継げます)。</p>
     </div>
     <div class="tablebox"><table>
       <thead><tr><th>変わったこと</th><th>内容</th></tr></thead>
@@ -233,6 +258,7 @@ a { color: var(--slime-deep); }
         <tr><td>初回のビルド</td><td>シェーダーの準備を減らして、最初のアップロードの待ち時間を短くしました (#18)</td></tr>
       </tbody>
     </table></div>
+    </details>
   </section>
 
   <section id="ja-install">
@@ -262,7 +288,7 @@ a { color: var(--slime-deep); }
   <section id="ja-screen">
     <div class="chap"><span class="n">2</span><h2>設定画面の全体</h2></div>
     <p>prefab を選ぶと、インスペクターに <b>Easy Slime Avatar</b> が出ます。上から <b>準備</b>・<b>見た目</b>・<b>細かく調整</b>・<b>困った時</b>・<b>不具合の報告</b> の 5 段です。ふつうは準備と見た目だけで足ります。</p>
-    <figure class="wide"><img src="shots/b5_overview.png" alt="Easy Slime Avatar のインスペクター。上に準備の ①〜⑤ のチェックリスト、その下に開いた見た目、一番下に畳まれた細かく調整・困った時・不具合の報告" loading="lazy"><figcaption>設定画面 (ゆめかに入れた例)。準備の ①〜⑤ と、開いた「見た目」</figcaption></figure>
+    <figure class="wide"><img src="shots/b6_overview.png" alt="Easy Slime Avatar のインスペクター。上に準備の ①〜⑤ のチェックリスト、その下に開いた見た目、一番下に畳まれた細かく調整・困った時・不具合の報告" loading="lazy"><figcaption>設定画面 (ゆめかに入れた例)。準備の ①〜⑤ と、開いた「見た目」</figcaption></figure>
     <div class="grid3">
       <div class="card"><span class="k">準備</span><p>①〜⑤ を上から順に ✔ にするチェックリスト。✔ は緑、要確認は黄色の「!」、足りない時は赤の「✖」、やらなくてもよい手順は「・」。①〜③ が ✔ ならそのままアップロードできます。問題がある時は、準備の上に注意の箱が出ます。</p></div>
       <div class="card"><span class="k">見た目</span><p>色・透明度・崩れ方・重さ・垂れ・足元・コア。全員が触る所で、最初から開いています。既定のままでも動きます。</p></div>
@@ -276,7 +302,7 @@ a { color: var(--slime-deep); }
     <p>各行の右のボタンを押すと、その下に中身が開きます。もう一度押す (「閉じる」) と閉じます。</p>
 
     <h3 id="ja-prep1">① 体と顔</h3>
-    <figure class="wide"><img src="shots/b5_bodyface.png" alt="① 体と顔を開いた所。体と顔が 1 つのメッシュの切り替え、体のメッシュ、顔のメッシュ、顔の肌のマテリアルの欄" loading="lazy"><figcaption>「変更」を押した所</figcaption></figure>
+    <figure class="wide"><img src="shots/b6_bodyface.png" alt="① 体と顔を開いた所。体と顔が 1 つのメッシュの切り替え、体のメッシュ、顔のメッシュ、顔の肌のマテリアルの欄" loading="lazy"><figcaption>「変更」を押した所</figcaption></figure>
     <div class="tablebox"><table>
       <thead><tr><th>項目</th><th>説明</th></tr></thead>
       <tbody>
@@ -287,7 +313,7 @@ a { color: var(--slime-deep); }
     </table></div>
 
     <h3 id="ja-prep2">② スライムにする所</h3>
-    <figure class="wide"><img src="shots/b5_meshes.png" alt="② スライムにする所の一覧。上に「服をまとめて」の 3 つのボタン、その下に体と顔、オブジェクトごとの畳み (髪 Milltina_Bunny Angel Hair、衣装 Lust_Sin など)。列は 名前・スライムの時・扱い" loading="lazy"><figcaption>「一覧」を押した所 (シスターの例。▸ の付いた行が畳み。上の黄色い箱は lilToon 以外のマテリアルがある時の注意)</figcaption></figure>
+    <figure class="wide"><img src="shots/b6_meshes.png" alt="② スライムにする所の一覧。上に「服をまとめて」の 3 つのボタン、その下に体と顔、オブジェクトごとの畳み (髪 Milltina_Bunny Angel Hair、衣装 Lust_Sin など)。列は 名前・スライムの時・扱い" loading="lazy"><figcaption>「一覧」を押した所 (シスターの例。▸ の付いた行が畳み。上の黄色い箱は lilToon 以外のマテリアルがある時の注意)</figcaption></figure>
     <p>アバターの中のメッシュを、スライムにするか・服を残すか溶かすかを決める所です。名前から自動で振り分けてあります。<b>違う物と、溶かしたい服だけ直してください。</b>② の行の要約 (「スライム: 体・顔・髪 4 ／ 残す服 16 ／ 溶ける服 0」) で数を確かめられます。</p>
 
     <h4>服をまとめて</h4>
@@ -358,8 +384,8 @@ a { color: var(--slime-deep); }
       </tbody>
     </table></div>
     <div class="pair">
-      <figure><img src="shots/b5_facemask.png" alt="③ 顔マスクを開いた所。顔の欄 (部品を選ぶ)、選ぶ画面を開くボタン、白黒のマスクの見本" loading="lazy"><figcaption>③ 顔マスクの「選ぶ」を押した所。白 = 残す、黒 = スライム</figcaption></figure>
-      <figure><img src="shots/10_picker.png" alt="顔マスク選択の画面。顔テクスチャの部品が並び、残す部品が赤く塗られている" loading="lazy"><figcaption>選ぶ画面。赤く見える部品が残る所</figcaption></figure>
+      <figure><img src="shots/b6_facemask.png" alt="③ 顔マスクを開いた所。顔の欄 (部品を選ぶ)、選ぶ画面を開くボタン、白黒のマスクの見本" loading="lazy"><figcaption>③ 顔マスクの「選ぶ」を押した所。白 = 残す、黒 = スライム</figcaption></figure>
+      <figure><img src="shots/b6_picker.png" alt="顔マスク選択の画面。顔テクスチャの部品が並び、残す部品が赤く塗られている" loading="lazy"><figcaption>選ぶ画面 (初めて開いた所)。赤く見える部品が残る所</figcaption></figure>
     </div>
     <ol class="steps">
       <li><div><h4>「選ぶ画面を開く」を押す</h4><p>初めて開いた時は「おまかせ」(推測) で選ばれた状態から始まります。</p></div></li>
@@ -383,7 +409,7 @@ a { color: var(--slime-deep); }
   <section id="ja-pref">
     <div class="chap"><span class="n">5</span><h2>見た目</h2></div>
     <p>見た目の方向を決める所です。最初から開いています。</p>
-    <figure class="wide"><img src="shots/b5_look.png" alt="見た目を開いた所。スライムの色、透明度、崩れ方、重さ、体から垂れる (量・髪の先から)、足元の水たまり (溜まり)、コアとコアの色・大きさ・「コアの位置を選ぶ」「自動の位置に戻す」、髪の崩れ、着た時からスライム" loading="lazy"><figcaption>見た目 (コアの色・大きさ・位置も開いた状態)</figcaption></figure>
+    <figure class="wide"><img src="shots/b6_look.png" alt="見た目を開いた所。スライムの色、透明度、崩れ方、重さ、体から垂れる (量・髪の先から)、足元の水たまり (溜まり)、コアとコアの色・大きさ・「コアの位置を選ぶ」「自動の位置に戻す」、髪の崩れ、着た時からスライム" loading="lazy"><figcaption>見た目 (コアの色・大きさ・位置も開いた状態)</figcaption></figure>
     <div class="tablebox"><table>
       <thead><tr><th>項目</th><th>既定</th><th>説明</th></tr></thead>
       <tbody>
@@ -412,8 +438,8 @@ a { color: var(--slime-deep); }
     <div class="chap"><span class="n">6</span><h2>細かく調整</h2></div>
     <p>7 つのまとまりに分かれています。<b>ふつうは触らなくて大丈夫です。</b>どれも既定のままで動きます。気になる所だけ変えてください。体の崩れ方・垂れ・泡の値を変えると、見た目の「崩れ方」に「(調整あり)」と出ます。</p>
     <div class="pair">
-      <figure><img src="shots/b5_detail1.png" alt="細かく調整の体の崩れ方・部位ごと・垂れの形を開いた所" loading="lazy"><figcaption>体の崩れ方・部位ごと・垂れの形</figcaption></figure>
-      <figure><img src="shots/b5_detail2.png" alt="細かく調整の中と透け方・コアの膜・触ったとき・軽くするを開いた所" loading="lazy"><figcaption>中と透け方・コアの膜・触ったとき・軽くする</figcaption></figure>
+      <figure><img src="shots/b6_detail1.png" alt="細かく調整の体の崩れ方・部位ごと・垂れの形を開いた所" loading="lazy"><figcaption>体の崩れ方・部位ごと・垂れの形</figcaption></figure>
+      <figure><img src="shots/b6_detail2.png" alt="細かく調整の中と透け方・コアの膜・触ったとき・重さと見た目を開いた所" loading="lazy"><figcaption>中と透け方・コアの膜・触ったとき・重さと見た目</figcaption></figure>
     </div>
 
     <h3>体の崩れ方</h3>
@@ -457,7 +483,7 @@ a { color: var(--slime-deep); }
       </tbody>
     </table></div>
 
-    <h3>コアの膜・触ったとき・軽くする</h3>
+    <h3>コアの膜・触ったとき・重さと見た目</h3>
     <div class="tablebox"><table>
       <thead><tr><th>項目</th><th>既定</th><th>説明</th></tr></thead>
       <tbody>
@@ -474,7 +500,7 @@ a { color: var(--slime-deep); }
   <section id="ja-tune">
     <div class="chap"><span class="n">7</span><h2>困った時</h2></div>
     <p>設定画面の「困った時 (症状から)」には、症状ごとに「原因」と「ここを開く」ボタンが並んでいます。ボタンを押すと、直す設定の所まで畳みが開いてスクロールし、その欄が 3 秒ほど黄色く光ります。設定では直せない症状は「不具合の報告」ボタンで報告の所へ飛びます。直す欄がすぐ下にある症状 (服の届く距離・顔の奥行き・頭の中を液で隠す) は、その場で変えられます。</p>
-    <figure class="wide"><img src="shots/b5_trouble.png" alt="困った時 (症状から) を開いた所。まとまり「形・崩れ」の下に症状と原因、右に「ここを開く」ボタン。服の下からスライムが漏れる の下に 服の届く距離 の欄" loading="lazy"><figcaption>困った時 (症状から)。症状の下に原因、右に「ここを開く」ボタン</figcaption></figure>
+    <figure class="wide"><img src="shots/b6_trouble.png" alt="困った時 (症状から) を開いた所。まとまり「形・崩れ」の下に症状と原因、右に「ここを開く」ボタン。服の下からスライムが漏れる の下に 服の届く距離 の欄" loading="lazy"><figcaption>困った時 (症状から)。症状の下に原因、右に「ここを開く」ボタン</figcaption></figure>
     <p>画面と同じ表です。</p>
     <div class="tablebox"><table>
       <thead><tr><th>こうなったら</th><th>原因</th><th>ここを変える</th></tr></thead>
@@ -502,7 +528,7 @@ a { color: var(--slime-deep); }
         <tr><th colspan="3">見え方・重さ</th></tr>
         <tr><td>もっと透けてほしい / 濃くしたい</td><td>—</td><td>見た目の「透明度」</td></tr>
         <tr><td>中に入った時に見えすぎる / 見えなさすぎる</td><td>—</td><td>細かく調整 › 中と透け方の「中の濃さ」</td></tr>
-        <tr><td>重い・ミラーの前で重い</td><td>透けの計算と垂れの数</td><td>見た目の「重さ」を「軽い」に。さらに 細かく調整 › 軽くする の 3 つ</td></tr>
+        <tr><td>重い・ミラーの前で重い</td><td>透けの計算と垂れの数</td><td>見た目の「重さ」を「軽い」に。さらに 細かく調整 › 重さと見た目 で、上の 2 つがオフ (軽い方) か確かめ、「髪の裏側を描かない」をオンに</td></tr>
         <tr><td>初めてのアップロードがなかなか終わらない</td><td>初回はシェーダーの準備で数分〜10 分かかる</td><td>待ってください (2 回目からは速くなります)</td></tr>
         <tr><td>測った後の見た目が気に入らない</td><td>—</td><td>押した直後なら Ctrl+Z で全部戻ります。後からなら 細かく調整 › 部位ごと などで直す</td></tr>
       </tbody>
@@ -552,13 +578,12 @@ a { color: var(--slime-deep); }
       <div class="card"><span class="k">5. ほかのツール・ギミックが壊れない</span><ul>
         <li>AAO・TexTransTool・FaceEmo など、入れているツールと一緒に使える</li>
         <li>表情・衣装の切り替えなど、入れているギミックが今までどおり動く</li></ul></div>
-      <div class="card"><span class="k">6. β5 で変わった所</span><ul>
-        <li>設定画面の並び (準備 ①〜⑤ → 見た目 → 細かく調整) が分かりやすくなったか</li>
-        <li>② の一覧がオブジェクトごとの分け方で、自分のアバターで探しやすいか</li>
-        <li>体・手足・しっぽなどが別メッシュの時、つなぎ目が目立たなくなったか</li>
-        <li>④ 体の大きさに合わせる を使った時、手・しっぽなどの崩れ方・膨れ方が良くなったか (使わなくても構いません)</li>
-        <li>止まった時の泡・カメラや鏡での写り方 (前の版で気になった方は特に)</li>
-        <li>ジャンプした時の垂れの先と水たまり、四つん這い・伏せから立ち上がった時の水たまりの動き (VR かデスクトップかも)</li></ul></div>
+      <div class="card"><span class="k">6. β6 で変わった所</span><ul>
+        <li>β5 と比べて軽くなったか (近く・鏡・カメラ、VR かデスクトップか、グラフィックボードとワールド名も)</li>
+        <li>髪・垂れの透け方、服の上の垂れ・小物の見た目に違和感がないか</li>
+        <li>下を向いた時の垂れ、体の砂のような点、指・耳・しっぽの先の垂れが直ったか</li>
+        <li>袖・手袋だけを「溶ける」にした時、腰・脚がパンツなどを突き抜けないか</li>
+        <li>β5 から上書きして、設定と顔マスクがそのまま残っていたか</li></ul></div>
     </div>
   </section>
 
@@ -573,7 +598,7 @@ a { color: var(--slime-deep); }
 【3. 質感】良かった所・物足りない所 (ワールド名も)
 【4. 顔マスク】おまかせはどれくらい合っていたか、どこを直したか、クリックで選ぶ操作は使いやすかったか
 【5. ほかのツール】一緒に入れて問題なかったか
-【6. β5 で変わった所】設定画面の並び・② のオブジェクトごとの一覧・別メッシュのつなぎ目・④ 体の大きさに合わせる・泡・カメラや鏡・ジャンプや四つん這いの時の垂れと水たまり (VR / デスクトップ)
+【6. β6 で変わった所】軽くなったか (VR / デスクトップ、グラフィックボード、ワールド名)・髪や垂れの見た目・下を向いた時の垂れ・砂のような点・指先の垂れ・袖だけ溶かした時・上書きで設定が残ったか
 【6. 出来ると嬉しいこと・分かりづらかった設定】
 【7. 不具合】(別に送ったものは「送信済み」で OK)</pre></div>
     <h3>不具合の報告</h3>
@@ -608,7 +633,6 @@ a { color: var(--slime-deep); }
         <tr><td>初回のビルドが長い</td><td>スライムのシェーダーの準備で、最初のアップロード (ビルド) に数分〜10 分かかることがあります。同じプロジェクトなら 2 回目以降は速くなります。キットを更新した後の最初の 1 回はまた長くなります (#18、短くする方法を検討中)</td></tr>
         <tr><td>明るさを変えるツール</td><td>スライムのマテリアルは lilToon ではないため、LightLimitChanger などの明るさの制限はスライムの部分には効きません</td></tr>
         <tr><td>水たまりと段差</td><td>段差の外へ出ると、水たまりが段の高さで浮いて見えることがあります。跳んだ瞬間と着地の瞬間に 1 コマだけ、床に残した水たまり・垂れの先がずれて見えることがあります</td></tr>
-        <tr><td>袖・手袋だけ溶かした時</td><td>袖・手袋など腕の服だけを「溶ける」にすると、ほかの服 (パンツなど) が縮めていた腰・脚まで元に戻ることがあります (#8、調整中)</td></tr>
         <tr><td>同じ名前のメッシュ</td><td>同じ親の下に同じ名前のメッシュが 2 つあると、スライムの時の隠す・出す・マテリアルの切り替えは上の 1 つにしか効きません。別々に扱いたい時は名前を変えてください</td></tr>
       </tbody>
     </table></div>
@@ -631,7 +655,7 @@ a { color: var(--slime-deep); }
     </ul>
   </section>
 
-  <footer><span>れあちのおもちゃ箱 · 簡単スライム化キット 0.9.0-beta.5 (2026-10-24)</span><span>細心の注意を払って作っていますが、このキットの使用によって生じたいかなる損害・トラブルについても、作者は責任を負いません。</span></footer>
+  <footer><span>れあちのおもちゃ箱 · 簡単スライム化キット 0.9.0-beta.6 (2026-11-25)</span><span>細心の注意を払って作っていますが、このキットの使用によって生じたいかなる損害・トラブルについても、作者は責任を負いません。</span></footer>
 </main>
 
 </div>
